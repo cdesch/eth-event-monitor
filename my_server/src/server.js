@@ -72,9 +72,9 @@ const filter2 = {
 provider.on(filter2,  (log, event) => {
   // do whatever you want here
   // I'm pretty sure this returns a promise, so don't forget to resolve it
-  console.log("here2");
-  console.log(log);
-  console.log(event);
+  // console.log("here2");
+  // console.log(log);
+  // console.log(event);
 })
 
 
