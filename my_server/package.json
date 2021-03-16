@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/server.js",
-    "watch": "nodemon src/server.js"
+    "watch": "nodemon src/server.js",
+    "start-eth": "node src/ethers-server.js"
   },
   "dependencies": {
     "ethers": "^5.0.32",

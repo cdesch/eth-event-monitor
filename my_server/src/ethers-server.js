@@ -25,22 +25,22 @@ provider.on("block", async (block_number)=>{
   //   console.log("txr", tx);
   // })
   
-  // const block = await provider.getBlockWithTransactions(block_number);
-  // console.log("block", block);
-  // block.transactions.map(async (tx_hash) => {
-  //   console.log("");
-  //   const tx = await provider.getTransactionReceipt(tx_hash.hash);    
-  //   console.log("tx", tx);
-  //   const code = await provider.getCode(tx_hash.to);
+  const block = await provider.getBlockWithTransactions(block_number);
+  console.log("block", block);
+  block.transactions.map(async (tx_hash) => {
+    console.log("");
+    const tx = await provider.getTransactionReceipt(tx_hash.hash);    
+    console.log("tx", tx);
+    const code = await provider.getCode(tx_hash.to);
 
-  //   console.log("code", code);
-  //   if (code == "0x"){
-  //     console.log("normal transactions");
-  //   } else {
-  //     console.log("tis contract");
-  //   }
+    console.log("code", code);
+    if (code == "0x"){
+      console.log("normal transactions");
+    } else {
+      console.log("tis contract");
+    }
 
-  // });
+  });
 })
 
 
@@ -69,13 +69,13 @@ const filter2 = {
   ]
 }
 
-// provider.on( filter2,  (log, event) => {
-//   // do whatever you want here
-//   // I'm pretty sure this returns a promise, so don't forget to resolve it
-//   console.log("here2");
-//   // console.log(log);
-//   // console.log(event);
-// })
+provider.on(filter2,  (log, event) => {
+  // do whatever you want here
+  // I'm pretty sure this returns a promise, so don't forget to resolve it
+  // console.log("here2");
+  // console.log(log);
+  // console.log(event);
+})
 
 
 
@@ -89,30 +89,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
-app.get('/listeners',  (req, res) => {
-  const listeners =  provider.listeners();
-  console.log("listeners",listeners )
-  listeners.map((listener) => {
-    // console.log("listener.name", listener.name);
-    console.log("listener", listener);
-  })
-
-  res.send({listeners});
+app.get('/listeners',(req, res) => {
+  res.send('Hello World!');
 })
 
-
-
-app.get('/add_listener',  (req, res) => {
-  
-provider.on( filter2,  (log, event) => {
-  // do whatever you want here
-  // I'm pretty sure this returns a promise, so don't forget to resolve it
-  console.log("here2");
-  // console.log(log);
-  // console.log(event);
-})
-  res.send({"ok": "ok"});
-})
 
 
 app.listen(port, () => {

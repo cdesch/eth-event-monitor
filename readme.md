@@ -12,3 +12,5 @@ npx hardhat run --network localhost scripts/counter-increment.js
 npx hardhat run --network localhost scripts/counterWithOwner-increment.js
 npx hardhat run --network localhost scripts/send-transaction.js
 
+cd my_contracts 
+npx hardhat node
